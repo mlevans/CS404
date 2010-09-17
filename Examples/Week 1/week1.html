@@ -1,0 +1,53 @@
+<!-- First JavaScript program in CS404 using the Raphael visualization library. 
+This is a modified version of Ben Gimpert's example.-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"> 
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script src="lib/raphael.js" type="text/javascript" charset="utf-8"></script>
+
+<style>
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+body {
+	background: black;
+	font-family: Helvetica,Arial, sans-serif;
+	font-size:16px;
+
+}
+</style>
+<script type="text/javascript" charset="utf-8">
+
+var CANVAS_WIDTH = 600;
+var CANVAS_HEIGHT = 600;
+
+window.onload = function() {
+
+	var paper = Raphael(30, 30, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+	var tMax = 2 * Math.PI;
+	for (var t=0; t < tMax; t += tMax / 750) {
+		var randomRadius = Math.floor(20*Math.random());
+		var randomColor = 'rgb(' + Math.floor(1+254*Math.random()) +
+		", " + Math.floor(1+254*Math.random()) + ", " +
+		Math.floor(1+254*Math.random()) + ")";
+
+		var x = (t / tMax) * CANVAS_WIDTH;
+		var y = CANVAS_HEIGHT/2 + Math.cos(t) * (CANVAS_HEIGHT / 2);
+		var circle = paper.circle(x, y, randomRadius);
+		circle.attr('fill', randomColor);
+	}
+
+	var textAttributes = { font: '16pt Helvetica,Arial, sans-serif', fill: 'white' };
+	paper.text(CANVAS_WIDTH / 2, CANVAS_HEIGHT/2 - 30, "CS404: Week One").attr(textAttributes);
+
+	var rectangleAttributes = { stroke: 'grey' };
+	paper.rect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT).attr(rectangleAttributes);
+};
+
+</script>
+</head>
+<body><center><a href=""onClick="window.location.reload()">Reload the Drawing</a></center></body>
+</html>
