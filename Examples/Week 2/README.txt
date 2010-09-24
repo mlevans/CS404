@@ -1,0 +1,1 @@
+This is second week of code from CS404.  We use JQuery!

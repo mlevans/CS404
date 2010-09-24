@@ -1,0 +1,57 @@
+<!-- Week Two's sample JavaScript application using JQuery -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"> 
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<script src="lib/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+
+<style>
+body {
+        color: white;
+	background: black;
+}
+</style>
+<script type="text/javascript" charset="utf-8">
+
+var multiplyString = function (name, greeting, num) {
+        
+	var str = ""; //Begin with empty string
+	var i = 1;
+
+        while (i <= num) {
+               	str = str + greeting + " " + name + "!" + "\n";
+                i++;
+        }
+        
+	return str;
+};
+
+var onClickHandler = function(ev) {
+
+    var nameText = $("#nameText").val();
+    var names = nameText.split(",");
+    var results = ""; //Begin with an empty string
+
+    var k = 0;
+    for (k; k < names.length; k++) {
+        results += multiplyString(names[k], "Hello", 2) + "<br>";
+    }
+
+    $("#results").html(results);
+}
+    
+</script>
+</head>
+
+<body>
+    
+    Names (Separated by a comma): <input type="text" id="nameText" value="Test">
+                       <button onclick="onClickHandler(); return false">Submit
+                       </button>
+        </input>
+        <div id="results" style="color: white;">
+            </div>
+    
+</body>
+</html>
